@@ -54,6 +54,11 @@ function connectMQTT() {
             document.getElementById("shareStatusBtn").disabled = false;
             document.getElementById("mqttHost").disabled = true;
             document.getElementById("mqttPort").disabled = true;
+
+            document.getElementById("publishSection").style.display = "block";
+            document.getElementById("publishButton").disabled = false;
+            document.getElementById("topicInput").disabled = false;
+            document.getElementById("messageInput").disabled = false;
             client.subscribe(topic);
         },
         onFailure: (error) => {
@@ -73,6 +78,10 @@ function disconnectMQTT() {
         document.getElementById("connectBtn").disabled = false;
         document.getElementById("disconnectBtn").disabled = true;
         document.getElementById("shareStatusBtn").disabled = true;
+        document.getElementById("publishSection").style.display = "none";
+        document.getElementById("publishButton").disabled = true;
+        document.getElementById("topicInput").disabled = true;
+        document.getElementById("messageInput").disabled = true;
 
         // Reset map
         if (marker) {
@@ -148,6 +157,23 @@ function updateMap(data) {
 
     map.setView([lat, lon], 13);
 }
+
+document.getElementById("publishSection").style.display = "none";
+
+document.getElementById("publishButton").addEventListener("click", function() {
+    var user_topic = document.getElementById("topicInput").value;  
+    var message = document.getElementById("messageInput").value;
+
+    if (user_topic && message) {
+        var mqttMessage = new Paho.MQTT.Message(message);
+        mqttMessage.destinationName = user_topic;
+        client.send(mqttMessage); 
+
+    } else {
+        alert("Please enter both a topic and a message.");
+    }
+});
+
 
 // Event Listeners
 document.getElementById("connectBtn").addEventListener("click", connectMQTT);

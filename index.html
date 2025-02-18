@@ -40,9 +40,15 @@
     <button id="connectBtn">Start Connection</button>
     <button id="disconnectBtn" disabled>End Connection</button>
     <button id="shareStatusBtn" disabled>Share My Status</button>
-
+    
     <div id="map"></div>
 
+    <div id="publishSection">
+        <input type="text" id="topicInput" placeholder="Enter topic" />
+        <input type="text" id="messageInput" placeholder="Enter message" />
+        <button id="publishButton">Publish</button>
+    </div>
+    
     <!-- MQTT and Leaflet -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
