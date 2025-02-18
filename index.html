@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT GeoWeb App</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>MQTT GeoWeb App</h2>
+
+    <label>MQTT Host:</label>
+    <input type="text" id="mqttHost" value="test.mosquitto.org">
+    <label>Port:</label>
+    <input type="number" id="mqttPort" value="8080">
+    <br>
+
+    <button id="connectBtn">Start Connection</button>
+    <button id="disconnectBtn" disabled>End Connection</button>
+    <button id="shareStatusBtn" disabled>Share My Status</button>
+
+    <div id="map"></div>
+
+    <!-- MQTT and Leaflet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
