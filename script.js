@@ -8,11 +8,11 @@ let isManuallyDisconnected = false;
 // MQTT Connection Function
 function connectMQTT() {
     let host = document.getElementById("mqttHost").value || "test.mosquitto.org";
-    let port = parseInt(document.getElementById("mqttPort").value) || 8080;
+    let port = parseInt(document.getElementById("mqttPort").value) || 8081;
 
-    let wsHost = `ws://${host}:${port}/mqtt`;
+    let wssHost = `wss://${host}:${port}/mqtt`;
 
-    client = new Paho.MQTT.Client(wsHost, "client-" + Math.random().toString(36).substring(7));
+    client = new Paho.MQTT.Client(wssHost, "client-" + Math.random().toString(36).substring(7));
 
     client.onConnectionLost = (responseObject) => {
         isConnected = false;
